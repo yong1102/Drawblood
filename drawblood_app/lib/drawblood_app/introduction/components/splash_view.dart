@@ -28,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 200),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Image.asset(

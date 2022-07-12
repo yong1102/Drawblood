@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:drawblood_app/drawblood_app/login_page/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class CenterNextButton extends StatelessWidget {
@@ -137,7 +136,7 @@ class CenterNextButton extends StatelessWidget {
               position: _loginTextMoveAnimation,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Text(
                     'Already have an account? ',
                     style: TextStyle(
@@ -146,20 +145,12 @@ class CenterNextButton extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Color(0xff132137),
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Color(0xff132137),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
