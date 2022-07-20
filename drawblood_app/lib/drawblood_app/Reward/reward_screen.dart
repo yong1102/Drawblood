@@ -1,3 +1,4 @@
+import 'package:drawblood_app/drawblood_app/ui_view/reward_list_view.dart';
 import 'package:drawblood_app/drawblood_app/ui_view/reward_view.dart';
 import 'package:flutter/material.dart';
 
@@ -62,6 +63,17 @@ class _RewardScreenState extends State<RewardScreen>
             curve:
                 Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
+      ),
+    );
+
+    listViews.add(
+      RewardListView(
+        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+                parent: widget.animationController!,
+                curve: Interval((1 / count) * 5, 1.0,
+                    curve: Curves.fastOutSlowIn))),
+        mainScreenAnimationController: widget.animationController!,
       ),
     );
   }
@@ -130,7 +142,7 @@ class _RewardScreenState extends State<RewardScreen>
                     0.0, 30 * (1.0 - topBarAnimation!.value), 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: drawbloodAppTheme.white.withOpacity(topBarOpacity),
+                    color: drawbloodAppTheme.red.withOpacity(topBarOpacity),
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(32.0),
                     ),
