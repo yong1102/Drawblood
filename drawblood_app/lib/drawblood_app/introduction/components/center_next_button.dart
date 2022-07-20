@@ -1,4 +1,6 @@
 import 'package:animations/animations.dart';
+import 'package:drawblood_app/drawblood_app/login_page/login_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class CenterNextButton extends StatelessWidget {
@@ -137,21 +139,21 @@ class CenterNextButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Already have an account? ',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                  Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Color(0xff132137),
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  RichText(
+                    text: TextSpan(children: <TextSpan>[
+                      TextSpan(text: 'Already have an account?'),
+                      TextSpan(
+                          text: 'login',
+                          style: TextStyle(color: Color(0xff132137)),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginScreen()),
+                              );
+                            })
+                    ]),
                   ),
                 ],
               ),
