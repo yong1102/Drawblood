@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../drawbood_app_theme.dart';
@@ -131,23 +133,46 @@ class RewardsListView extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  focusColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-                  splashColor:
-                      drawbloodAppTheme.nearlyDarkBlue.withOpacity(0.2),
-                  onTap: () {},
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 16, left: 16, right: 16),
-                        child: Image.asset(imagepath!),
-                      ),
-                    ],
-                  ),
-                ),
+                    focusColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                    splashColor:
+                        drawbloodAppTheme.nearlyDarkBlue.withOpacity(0.2),
+                    onTap: () {},
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 16, left: 16, right: 16),
+                                child: Image.asset(imagepath!),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: 12, left: 8, right: 8, bottom: 12),
+                                child: Column(children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Text('ABC'),
+                                      Text('def')
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text('ABC'),
+                                      Text('def')
+                                    ],
+                                  )
+                                ]),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )),
               ),
             ),
           ),
