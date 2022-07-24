@@ -43,7 +43,8 @@ dependencies:
   flutter_auth: ^0.0.1
   cloud_firestore: ^3.2.1
   firebase_database: ^9.0.16
-
+  fluttertoast: ^8.0.9
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

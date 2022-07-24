@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:drawblood_app/app_theme.dart';
+import 'package:drawblood_app/drawblood_app/drawblood_app_home_screen.dart';
 import 'package:drawblood_app/drawblood_app/introduction/introduction_animation_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'drawblood_app/drawblood_app_home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {

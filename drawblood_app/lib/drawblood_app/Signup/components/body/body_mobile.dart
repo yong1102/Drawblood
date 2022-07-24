@@ -1,43 +1,46 @@
-import 'package:drawblood_app/drawblood_app/Signup/signup_screen.dart';
+import 'package:drawblood_app/drawblood_app/Signup/components/background.dart';
+import 'package:drawblood_app/drawblood_app/addinfo/addinfo.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_button.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_input_field.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_password_field.dart';
-import 'package:drawblood_app/drawblood_app/login_page/components/background.dart';
+import 'package:drawblood_app/drawblood_app/login_page/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class Login_page extends StatefulWidget {
-  const Login_page({
-    Key? key,
-  }) : super(key: key);
+class signup extends StatefulWidget {
+  const signup({Key? key}) : super(key: key);
 
   @override
-  State<Login_page> createState() => _Login_pageState();
+  State<signup> createState() => _signupState();
 }
 
-class _Login_pageState extends State<Login_page> {
-  final emailController = TextEditingController();
-  final pssController = TextEditingController();
+class _signupState extends State<signup> {
   String email = "";
   String pss = "";
+
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final pssController = TextEditingController();
+    final database = FirebaseDatabase.instance.reference();
+    final userRef = database.child('user');
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text(
+              "SIGNUP",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             Text(
-              "Log In",
+              "Healtbot",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
             ),
-            Image.asset(
-              'assets/introduction/Logo.png',
-              width: size.width * 0.6,
-            ),
-            SizedBox(height: size.height * 0.03),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               icon: Icons.person,
@@ -53,22 +56,25 @@ class _Login_pageState extends State<Login_page> {
               },
               controller: pssController,
             ),
-            RoundedButton(text: "LOGIN", press: signIn),
+            RoundedButton(
+              text: "SIGNUP",
+              press: signUp,
+            ),
             SizedBox(height: size.height * 0.03),
             RichText(
               text: TextSpan(
                   style: TextStyle(color: Colors.grey, fontSize: 20.0),
                   children: <TextSpan>[
-                    TextSpan(text: "haven't create account? "),
+                    TextSpan(text: "Areadly have account? "),
                     TextSpan(
-                        text: "Sign Up",
+                        text: "Log In",
                         style: TextStyle(color: Colors.blue),
                         recognizer: TapGestureRecognizer()
                           ..onTap = (() => Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return const SignUpScreen();
+                                    return const LoginScreen();
                                   },
                                 ),
                               )))
@@ -80,13 +86,17 @@ class _Login_pageState extends State<Login_page> {
     );
   }
 
-  Future signIn() async {
+  Future signUp() async {
     try {
       await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: pss);
-    } on FirebaseAuthException catch (error) {
-      print(error);
-      Opendialog(error.toString());
+          .createUserWithEmailAndPassword(email: email, password: pss);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => addinfoScreen()),
+      );
+    } on FirebaseAuthException catch (e) {
+      Opendialog(e.toString());
+      Fluttertoast.showToast(msg: e.toString(), timeInSecForIosWeb: 25);
     }
   }
 
