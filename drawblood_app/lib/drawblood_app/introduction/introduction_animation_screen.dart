@@ -1,3 +1,5 @@
+import 'package:drawblood_app/drawblood_app/Signup/components/body/body_mobile.dart';
+import 'package:drawblood_app/drawblood_app/Signup/signup_screen.dart';
 import 'package:drawblood_app/drawblood_app/introduction/components/care_view.dart';
 import 'package:drawblood_app/drawblood_app/introduction/components/center_next_button.dart';
 import 'package:drawblood_app/drawblood_app/introduction/components/mood_diary_vew.dart';
@@ -112,6 +114,9 @@ class _IntroductionAnimationScreenState
   }
 
   void _signUpClick() {
-    Navigator.pop(context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignUpScreen()),
+    );
   }
 }
