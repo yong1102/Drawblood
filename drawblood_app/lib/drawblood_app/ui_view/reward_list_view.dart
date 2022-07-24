@@ -103,7 +103,7 @@ class RewardListView extends StatelessWidget {
                                           style: TextStyle(
                                             fontFamily:
                                                 drawbloodAppTheme.fontName,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w300,
                                             fontSize: 14,
                                             letterSpacing: 0.18,
                                             color: drawbloodAppTheme.grey
