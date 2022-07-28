@@ -1,27 +1,44 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drawblood_app/drawblood_app/models/reward_list_data.dart';
+import 'package:drawblood_app/drawblood_app/models/user_data.dart';
+import 'package:drawblood_app/drawblood_app/models/user_reward_list_data.dart';
 import 'package:drawblood_app/firebase_info.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../drawbood_app_theme.dart';
 
 import 'package:flutter/material.dart';
 
-class RewardListView extends StatelessWidget {
-  final AnimationController? animationController;
-  final Animation<double>? animation;
+String? uid = '';
+String point = '';
 
+class RewardListView extends StatefulWidget {
   const RewardListView({Key? key, this.animationController, this.animation})
       : super(key: key);
+
+  final Animation<double>? animation;
+  final AnimationController? animationController;
+
+  @override
+  State<RewardListView> createState() => _RewardListViewState();
+}
+
+class _RewardListViewState extends State<RewardListView> {
+  void initState() {
+    super.initState();
+    uid = useruid();
+  }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController!,
+      animation: widget.animationController!,
       builder: (BuildContext context, Widget? child) {
         return FadeTransition(
-          opacity: animation!,
+          opacity: widget.animation!,
           child: new Transform(
             transform: new Matrix4.translationValues(
-                0.0, 30 * (1.0 - animation!.value), 0.0),
+                0.0, 30 * (1.0 - widget.animation!.value), 0.0),
             child: Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, bottom: 18),
                 child: StreamBuilder<List<RewardModel>>(
@@ -113,16 +130,284 @@ class RewardListView extends StatelessWidget {
                                         trailing: Container(
                                           height: 30,
                                           width: 60,
-                                          child: RaisedButton(
-                                              textColor:
-                                                  drawbloodAppTheme.white,
-                                              color: drawbloodAppTheme.red,
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              16.0))),
-                                              onPressed: () {},
+                                          child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                primary: drawbloodAppTheme.red,
+                                                shape: StadiumBorder(),
+                                              ),
+                                              onPressed: () {
+                                                getUserPoint(uid);
+                                                if (point != '') {
+                                                  int userPoint =
+                                                      int.parse(point);
+                                                  int redeem_point = int.parse(
+                                                      rewardInfo.redeem_point ??
+                                                          "");
+                                                  if (userPoint >=
+                                                      redeem_point) {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (context) =>
+                                                                AlertDialog(
+                                                                  title:
+                                                                      const Text(
+                                                                    'Redeem Confirmation',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          drawbloodAppTheme
+                                                                              .fontName,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontSize:
+                                                                          20,
+                                                                      letterSpacing:
+                                                                          -0.1,
+                                                                      color: drawbloodAppTheme
+                                                                          .darkText,
+                                                                    ),
+                                                                  ),
+                                                                  content: Text(
+                                                                    "Are you sure you want to redeem ${rewardInfo.reward_name} ?",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          drawbloodAppTheme
+                                                                              .fontName,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      fontSize:
+                                                                          16,
+                                                                      letterSpacing:
+                                                                          -0.1,
+                                                                      color: drawbloodAppTheme
+                                                                          .darkText,
+                                                                    ),
+                                                                  ),
+                                                                  actions: <
+                                                                      Widget>[
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              {
+                                                                        userPoint -=
+                                                                            redeem_point,
+                                                                        point =
+                                                                            userPoint.toString(),
+                                                                        FirestoreQuery.createUserRewardList(UserRewardList(
+                                                                            uid:
+                                                                                uid,
+                                                                            reward_name: rewardInfo
+                                                                                .reward_name,
+                                                                            status:
+                                                                                "active",
+                                                                            description:
+                                                                                rewardInfo.description,
+                                                                            timestamp: Timestamp.now())),
+                                                                        FirestoreQuery.updateUserPoint(
+                                                                            uid,
+                                                                            point),
+                                                                        Navigator.pop(
+                                                                            context,
+                                                                            'Yes'),
+                                                                        Fluttertoast.showToast(
+                                                                            msg:
+                                                                                "Successfully Redeemed the Reward.",
+                                                                            toastLength: Toast
+                                                                                .LENGTH_SHORT,
+                                                                            gravity: ToastGravity
+                                                                                .BOTTOM,
+                                                                            timeInSecForIosWeb:
+                                                                                1,
+                                                                            backgroundColor:
+                                                                                drawbloodAppTheme.background,
+                                                                            textColor: drawbloodAppTheme.darkText,
+                                                                            fontSize: 16.0),
+                                                                      },
+                                                                      child:
+                                                                          const Text(
+                                                                        'Yes',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              drawbloodAppTheme.fontName,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontSize:
+                                                                              16,
+                                                                          letterSpacing:
+                                                                              -0.1,
+                                                                          color:
+                                                                              drawbloodAppTheme.red,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          context,
+                                                                          'No'),
+                                                                      child:
+                                                                          Text(
+                                                                        'No',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontFamily:
+                                                                              drawbloodAppTheme.fontName,
+                                                                          fontWeight:
+                                                                              FontWeight.w500,
+                                                                          fontSize:
+                                                                              16,
+                                                                          letterSpacing:
+                                                                              -0.1,
+                                                                          color: drawbloodAppTheme
+                                                                              .grey
+                                                                              .withOpacity(0.6),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ));
+                                                  } else {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) =>
+                                                            AlertDialog(
+                                                              title: const Text(
+                                                                'Insufficient Point',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      drawbloodAppTheme
+                                                                          .fontName,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 20,
+                                                                  letterSpacing:
+                                                                      -0.1,
+                                                                  color: drawbloodAppTheme
+                                                                      .darkText,
+                                                                ),
+                                                              ),
+                                                              content: Text(
+                                                                "Sorry, you do not have enough point to redeem ${rewardInfo.reward_name}. Please donate more to earn the point.",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      drawbloodAppTheme
+                                                                          .fontName,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontSize: 16,
+                                                                  letterSpacing:
+                                                                      -0.1,
+                                                                  color: drawbloodAppTheme
+                                                                      .darkText,
+                                                                ),
+                                                              ),
+                                                              actions: <Widget>[
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          context,
+                                                                          'OK'),
+                                                                  child:
+                                                                      const Text(
+                                                                    'OK',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          drawbloodAppTheme
+                                                                              .fontName,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      fontSize:
+                                                                          16,
+                                                                      letterSpacing:
+                                                                          -0.1,
+                                                                      color: drawbloodAppTheme
+                                                                          .red,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ));
+                                                  }
+                                                } else {
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          AlertDialog(
+                                                            title: const Text(
+                                                              'Error',
+                                                              style: TextStyle(
+                                                                fontFamily:
+                                                                    drawbloodAppTheme
+                                                                        .fontName,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 20,
+                                                                letterSpacing:
+                                                                    -0.1,
+                                                                color:
+                                                                    drawbloodAppTheme
+                                                                        .darkText,
+                                                              ),
+                                                            ),
+                                                            content: Text(
+                                                              "Sorry, something is going wrong. Please try again later.",
+                                                              style: TextStyle(
+                                                                fontFamily:
+                                                                    drawbloodAppTheme
+                                                                        .fontName,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 16,
+                                                                letterSpacing:
+                                                                    -0.1,
+                                                                color:
+                                                                    drawbloodAppTheme
+                                                                        .darkText,
+                                                              ),
+                                                            ),
+                                                            actions: <Widget>[
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        context,
+                                                                        'OK'),
+                                                                child:
+                                                                    const Text(
+                                                                  'OK',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        drawbloodAppTheme
+                                                                            .fontName,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontSize:
+                                                                        16,
+                                                                    letterSpacing:
+                                                                        -0.1,
+                                                                    color:
+                                                                        drawbloodAppTheme
+                                                                            .red,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ));
+                                                }
+                                              },
                                               child: Text(
                                                 "${rewardInfo.redeem_point}",
                                                 textAlign: TextAlign.center,
@@ -131,6 +416,8 @@ class RewardListView extends StatelessWidget {
                                                       .fontName,
                                                   fontSize: 14,
                                                   letterSpacing: 0.18,
+                                                  color:
+                                                      drawbloodAppTheme.white,
                                                 ),
                                               )),
                                         ),
@@ -149,4 +436,17 @@ class RewardListView extends StatelessWidget {
       },
     );
   }
+}
+
+getUserPoint(uid) {
+  final db = FirebaseFirestore.instance;
+  final docRef = db.collection("user").doc(uid);
+  String? userPoint;
+  docRef.get().then(
+    (DocumentSnapshot doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      point = data['point'];
+    },
+    onError: (e) => print("Error getting document: $e"),
+  );
 }
