@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:drawblood_app/firebase_info.dart';
 
 class UserModel {
   final String? name;
@@ -29,6 +29,34 @@ class UserModel {
         point: snapshot['point'],
         weight: snapshot['weight'],
       );
+
+  factory UserModel.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return UserModel(
+      name: data?['name'],
+      bloodtype: data?['bloodtype'],
+      gender: data?['gender'],
+      height: data?['height'],
+      phonenum: data?['phonenum'],
+      point: data?['point'],
+      weight: data?['weight'],
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (name != null) "name": name,
+      if (bloodtype != null) "bloodtype": bloodtype,
+      if (gender != null) "gender": gender,
+      if (height != null) "height": height,
+      if (phonenum != null) "phonenum": phonenum,
+      if (point != null) "point": point,
+      if (weight != null) "weight": weight,
+    };
+  }
 
   Map<String, dynamic> toJson() => {
         "name": name,

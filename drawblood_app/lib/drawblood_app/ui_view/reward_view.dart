@@ -1,10 +1,10 @@
 import 'package:drawblood_app/drawblood_app/models/user_data.dart';
+import 'package:drawblood_app/drawblood_app/ui_view/my_reward_page_view.dart';
 import 'package:drawblood_app/firebase_info.dart';
 
 import '../drawbood_app_theme.dart';
 
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 String? uid = '';
 
@@ -130,12 +130,67 @@ class _RewardViewState extends State<RewardView> {
                                             ),
                                           ],
                                         ),
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 12, bottom: 12),
-                                            child: Row(
-                                              children: <Widget>[],
-                                            ))
+                                        Row(
+                                          children: [
+                                            InkWell(
+                                              onTap: (() {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          MyRewardView() //here pass the actual values of these variables, for example false if the payment isn't successfull..etc
+                                                      ),
+                                                );
+                                              }),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 3.0),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      "My Reward",
+                                                      style: TextStyle(
+                                                        fontFamily:
+                                                            drawbloodAppTheme
+                                                                .fontName,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 16,
+                                                        letterSpacing: 0.18,
+                                                        color: drawbloodAppTheme
+                                                            .white,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 1.0),
+                                                      child: InkWell(
+                                                        onTap: (() {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        MyRewardView() //here pass the actual values of these variables, for example false if the payment isn't successfull..etc
+                                                                ),
+                                                          );
+                                                        }),
+                                                        child: Icon(
+                                                          Icons
+                                                              .arrow_forward_ios_outlined,
+                                                          color:
+                                                              drawbloodAppTheme
+                                                                  .white,
+                                                          size: 16,
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ]),
                                 ))
                               ]),
