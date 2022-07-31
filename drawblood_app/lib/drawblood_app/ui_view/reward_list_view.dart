@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drawblood_app/drawblood_app/models/reward_list_data.dart';
-import 'package:drawblood_app/drawblood_app/models/user_data.dart';
 import 'package:drawblood_app/drawblood_app/models/user_reward_list_data.dart';
 import 'package:drawblood_app/firebase_info.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:uuid/uuid.dart';
 import '../drawbood_app_theme.dart';
-
 import 'package:flutter/material.dart';
 
 String? uid = '';
@@ -200,6 +198,9 @@ class _RewardListViewState extends State<RewardListView> {
                                                                         FirestoreQuery.createUserRewardList(UserRewardList(
                                                                             uid:
                                                                                 uid,
+                                                                            redeem_id: Uuid()
+                                                                                .v4()
+                                                                                .toString(),
                                                                             reward_name: rewardInfo
                                                                                 .reward_name,
                                                                             status:

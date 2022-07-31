@@ -42,6 +42,7 @@ class FirestoreQuery {
 
     final newUserRewardList = UserRewardList(
             uid: rewardList.uid,
+            redeem_id: rewardList.redeem_id,
             reward_name: rewardList.reward_name,
             status: rewardList.status,
             description: rewardList.description,
@@ -63,6 +64,28 @@ class FirestoreQuery {
       await docRef.update({"point": point});
     } catch (e) {
       print("Some error occured: $e");
+    }
+  }
+
+  static Future updateUserRewardStatus(uid, redeem_id) async {
+    dynamic documentID = '';
+    final data = await FirebaseFirestore.instance
+        .collection("user_reward_list")
+        .where('uid', isEqualTo: uid)
+        .where('redeem_id', isEqualTo: redeem_id)
+        .get();
+
+    if (data.docs.isNotEmpty) {
+      documentID = data.docs[0].id;
+      final userRewardCollection =
+          FirebaseFirestore.instance.collection("user_reward_list");
+      final docRef = userRewardCollection.doc(documentID);
+
+      try {
+        await docRef.update({"status": 'used'});
+      } catch (e) {
+        print("Some error occured: $e");
+      }
     }
   }
 }

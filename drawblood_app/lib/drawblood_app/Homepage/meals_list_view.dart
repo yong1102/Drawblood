@@ -1,4 +1,4 @@
-import 'package:drawblood_app/drawblood_app/models/meals_list_data.dart';
+import 'package:drawblood_app/drawblood_app/models/news_list_data.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
