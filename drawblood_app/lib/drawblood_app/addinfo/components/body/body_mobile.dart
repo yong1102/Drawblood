@@ -165,6 +165,14 @@ class _addinfoState extends State<addinfo> {
     final User? user = auth.currentUser;
     final uid = user?.uid;
     final docUser = FirebaseFirestore.instance.collection('user').doc(uid);
+    final createreward = FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .collection('reward');
+    final createappointment = FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .collection('appointment');
 
     final json = {
       'name': name,
@@ -178,6 +186,8 @@ class _addinfoState extends State<addinfo> {
     };
 
     await docUser.set(json);
+    await createappointment;
+    await createreward;
 
     Navigator.push(
       context,
