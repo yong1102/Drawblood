@@ -1,6 +1,5 @@
 import 'package:drawblood_app/drawblood_app/models/user_data.dart';
 import 'package:drawblood_app/drawblood_app/ui_view/my_reward_page_view.dart';
-import 'package:drawblood_app/drawblood_app/ui_view/my_reward_page_view.dart';
 import 'package:drawblood_app/firebase_info.dart';
 
 import '../drawbood_app_theme.dart';
