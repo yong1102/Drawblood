@@ -139,7 +139,7 @@ class _addinfoState extends State<addinfo> {
                           );
                         }).toList(),
                         hint: Text(
-                          'Your Blood Type',
+                          Blood_type,
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
@@ -183,6 +183,7 @@ class _addinfoState extends State<addinfo> {
       'point': "0",
       'type': "user",
       'weight': weight,
+      'lastapp': DateTime(2022, 01, 01),
     };
 
     await docUser.set(json);
