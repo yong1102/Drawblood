@@ -1,5 +1,5 @@
-class MealsListData {
-  MealsListData({
+class NewsListData {
+  NewsListData({
     this.imagePath = '',
     this.titleTxt = '',
     this.startColor = '',
@@ -15,8 +15,8 @@ class MealsListData {
   List<String>? meals;
   int kacl;
 
-  static List<MealsListData> tabIconsList = <MealsListData>[
-    MealsListData(
+  static List<NewsListData> tabIconsList = <NewsListData>[
+    NewsListData(
       imagePath: 'assets/drawblood_app/breakfast.png',
       titleTxt: 'Breakfast',
       kacl: 525,
@@ -24,7 +24,7 @@ class MealsListData {
       startColor: '#FA7D82',
       endColor: '#FFB295',
     ),
-    MealsListData(
+    NewsListData(
       imagePath: 'assets/drawblood_app/lunch.png',
       titleTxt: 'Lunch',
       kacl: 602,
@@ -32,7 +32,7 @@ class MealsListData {
       startColor: '#738AE6',
       endColor: '#5C5EDD',
     ),
-    MealsListData(
+    NewsListData(
       imagePath: 'assets/drawblood_app/snack.png',
       titleTxt: 'Snack',
       kacl: 0,
@@ -40,7 +40,7 @@ class MealsListData {
       startColor: '#FE95B6',
       endColor: '#FF5287',
     ),
-    MealsListData(
+    NewsListData(
       imagePath: 'assets/drawblood_app/dinner.png',
       titleTxt: 'Dinner',
       kacl: 0,

@@ -3,6 +3,7 @@ import 'package:drawblood_app/drawblood_app/drawbood_app_theme.dart';
 import 'package:drawblood_app/drawblood_app/models/user_reward_list_data.dart';
 import 'package:drawblood_app/firebase_info.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 List<UserRewardList> userRewardList = [];
 List<UserRewardList> categoriesRewardList = [];
@@ -70,7 +71,16 @@ class MyRewardViewState extends State<MyRewardView> {
                           Navigator.pop(context);
                         },
                         icon: Icon(Icons.arrow_back)),
-                    Text('My Reward'),
+                    Text(
+                      'My Reward',
+                      style: TextStyle(
+                        fontFamily: drawbloodAppTheme.fontName,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        letterSpacing: 0.18,
+                        color: drawbloodAppTheme.darkerText,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -146,7 +156,7 @@ class MyRewardViewState extends State<MyRewardView> {
                       if (categoriesRewardList.isEmpty) {
                         return Center(
                           child: Text(
-                              'The section is currently empty. \n Donate more to earn more rewards',
+                              'The section is currently empty. \n Donate more to earn more rewards.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: drawbloodAppTheme.fontName,
@@ -232,7 +242,7 @@ class MyRewardViewState extends State<MyRewardView> {
                   ),
                   trailing: Container(
                     height: 32,
-                    width: 83,
+                    width: 87,
                     child: list.status == 'active'
                         ? ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -242,10 +252,20 @@ class MyRewardViewState extends State<MyRewardView> {
                             onPressed: () {
                               FirestoreQuery.updateUserRewardStatus(
                                   uid, list.redeem_id);
-                              getUserRewardList(uid);
+                              setState(() {
+                                getUserRewardList(uid);
+                              });
+                              Fluttertoast.showToast(
+                                  msg: "The Reward Marked as Used.",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: drawbloodAppTheme.background,
+                                  textColor: drawbloodAppTheme.darkText,
+                                  fontSize: 16.0);
                             },
                             child: Text(
-                              "Mark as Used",
+                              "Mark \n as Used",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: drawbloodAppTheme.fontName,
