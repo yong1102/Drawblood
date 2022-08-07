@@ -1,11 +1,11 @@
-import 'package:drawblood_app/drawblood_app/models/meals_list_data.dart';
+import 'package:drawblood_app/drawblood_app/models/news_list_data.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
 import '../drawbood_app_theme.dart';
 
-class MealsListView extends StatefulWidget {
-  const MealsListView(
+class NewsListView extends StatefulWidget {
+  const NewsListView(
       {Key? key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
@@ -13,13 +13,13 @@ class MealsListView extends StatefulWidget {
   final Animation<double>? mainScreenAnimation;
 
   @override
-  _MealsListViewState createState() => _MealsListViewState();
+  _NewsListViewState createState() => _NewsListViewState();
 }
 
-class _MealsListViewState extends State<MealsListView>
+class _NewsListViewState extends State<NewsListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<MealsListData> mealsListData = MealsListData.tabIconsList;
+  List<NewsListData> newsListData = NewsListData.tabIconsList;
 
   @override
   void initState() {
@@ -55,11 +55,11 @@ class _MealsListViewState extends State<MealsListView>
               child: ListView.builder(
                 padding: const EdgeInsets.only(
                     top: 0, bottom: 0, right: 16, left: 16),
-                itemCount: mealsListData.length,
+                itemCount: newsListData.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   final int count =
-                      mealsListData.length > 10 ? 10 : mealsListData.length;
+                      newsListData.length > 10 ? 10 : newsListData.length;
                   final Animation<double> animation =
                       Tween<double>(begin: 0.0, end: 1.0).animate(
                           CurvedAnimation(
@@ -68,8 +68,8 @@ class _MealsListViewState extends State<MealsListView>
                                   curve: Curves.fastOutSlowIn)));
                   animationController?.forward();
 
-                  return MealsView(
-                    mealsListData: mealsListData[index],
+                  return NewsView(
+                    newsListData: newsListData[index],
                     animation: animation,
                     animationController: animationController!,
                   );
@@ -83,12 +83,12 @@ class _MealsListViewState extends State<MealsListView>
   }
 }
 
-class MealsView extends StatelessWidget {
-  const MealsView(
-      {Key? key, this.mealsListData, this.animationController, this.animation})
+class NewsView extends StatelessWidget {
+  const NewsView(
+      {Key? key, this.newsListData, this.animationController, this.animation})
       : super(key: key);
 
-  final MealsListData? mealsListData;
+  final NewsListData? newsListData;
   final AnimationController? animationController;
   final Animation<double>? animation;
 
@@ -113,15 +113,15 @@ class MealsView extends StatelessWidget {
                       decoration: BoxDecoration(
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                              color: HexColor(mealsListData!.endColor)
+                              color: HexColor(newsListData!.endColor)
                                   .withOpacity(0.6),
                               offset: const Offset(1.1, 4.0),
                               blurRadius: 8.0),
                         ],
                         gradient: LinearGradient(
                           colors: <HexColor>[
-                            HexColor(mealsListData!.startColor),
-                            HexColor(mealsListData!.endColor),
+                            HexColor(newsListData!.startColor),
+                            HexColor(newsListData!.endColor),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -141,7 +141,7 @@ class MealsView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              mealsListData!.titleTxt,
+                              newsListData!.titleTxt,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: drawbloodAppTheme.fontName,
@@ -160,7 +160,7 @@ class MealsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      mealsListData!.meals!.join('\n'),
+                                      newsListData!.meals!.join('\n'),
                                       style: TextStyle(
                                         fontFamily: drawbloodAppTheme.fontName,
                                         fontWeight: FontWeight.w500,
@@ -173,13 +173,13 @@ class MealsView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            mealsListData?.kacl != 0
+                            newsListData?.kacl != 0
                                 ? Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
                                       Text(
-                                        mealsListData!.kacl.toString(),
+                                        newsListData!.kacl.toString(),
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily:
@@ -223,8 +223,7 @@ class MealsView extends StatelessWidget {
                                       padding: const EdgeInsets.all(6.0),
                                       child: Icon(
                                         Icons.add,
-                                        color:
-                                            HexColor(mealsListData!.endColor),
+                                        color: HexColor(newsListData!.endColor),
                                         size: 24,
                                       ),
                                     ),
@@ -252,7 +251,7 @@ class MealsView extends StatelessWidget {
                     child: SizedBox(
                       width: 80,
                       height: 80,
-                      child: Image.asset(mealsListData!.imagePath),
+                      child: Image.asset(newsListData!.imagePath),
                     ),
                   )
                 ],

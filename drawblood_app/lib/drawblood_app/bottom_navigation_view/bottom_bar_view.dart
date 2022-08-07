@@ -146,7 +146,7 @@ class _BottomBarViewState extends State<BottomBarView>
                         gradient: LinearGradient(
                             colors: [
                               drawbloodAppTheme.red,
-                              HexColor('#6A88E5'),
+                              HexColor('#FFC6C6'),
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight),

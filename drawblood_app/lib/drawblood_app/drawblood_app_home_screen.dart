@@ -1,9 +1,9 @@
+import 'package:drawblood_app/drawblood_app/Homepage/homepage_screen.dart';
 import 'package:drawblood_app/drawblood_app/Profile/profile_screen.dart';
 import 'package:drawblood_app/drawblood_app/Reward/reward_screen.dart';
 import 'package:drawblood_app/drawblood_app/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
-import 'my_diary/my_diary_screen.dart';
 import 'drawbood_app_theme.dart';
 import 'models/tabIcon_data.dart';
 
@@ -31,7 +31,7 @@ class _DrawBloodAppHomeScreenState extends State<DrawBloodAppHomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+    tabBody = HomeScreen(animationController: animationController);
     super.initState();
   }
 
@@ -88,7 +88,7 @@ class _DrawBloodAppHomeScreenState extends State<DrawBloodAppHomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      MyDiaryScreen(animationController: animationController);
+                      HomeScreen(animationController: animationController);
                 });
               });
             } else if (index == 1) {
