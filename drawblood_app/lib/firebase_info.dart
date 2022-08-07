@@ -35,6 +35,20 @@ class FirestoreQuery {
     }
   }
 
+
+  static Future<appoint?> readUserapp(uid) async {
+    final userCollection = FirebaseFirestore.instance
+        .collection("user")
+        .doc(uid)
+        .collection("appointment")
+        .doc('appoit');
+    final snapshot = await userCollection.get();
+    if (snapshot.exists) {
+      return appoint.fromJson(snapshot.data()!);
+      }
+      }
+
+
   static Future createUserRewardList(UserRewardList rewardList) async {
     final userRewardCollection =
         FirebaseFirestore.instance.collection("user_reward_list");
@@ -86,6 +100,7 @@ class FirestoreQuery {
       } catch (e) {
         print("Some error occured: $e");
       }
+
     }
   }
 }

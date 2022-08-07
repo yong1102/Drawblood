@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:drawblood_app/drawblood_app/ui_view/appointment.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
@@ -27,6 +28,7 @@ class _BottomBarViewState extends State<BottomBarView>
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
+
     animationController?.forward();
     super.initState();
   }
@@ -162,7 +164,7 @@ class _BottomBarViewState extends State<BottomBarView>
                           splashColor: Colors.white.withOpacity(0.1),
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
-                          onTap: widget.addClick,
+                          onTap: () => popout(context),
                           child: Icon(
                             Icons.calendar_month_outlined,
                             color: drawbloodAppTheme.white,
