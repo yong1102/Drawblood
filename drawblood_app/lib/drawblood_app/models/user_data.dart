@@ -10,6 +10,7 @@ class UserModel {
   final String? point;
   final String? weight;
   final DateTime? lastapp;
+  final String? status;
 
   UserModel(
       {this.name,
@@ -19,18 +20,19 @@ class UserModel {
       this.phonenum,
       this.point,
       this.weight,
-      this.lastapp});
+      this.lastapp,
+      this.status});
 
   static UserModel fromJson(Map<String, dynamic> snapshot) => UserModel(
-        name: snapshot['name'],
-        bloodtype: snapshot['bloodtype'],
-        gender: snapshot['gender'],
-        height: snapshot['height'],
-        phonenum: snapshot['phonenum'],
-        point: snapshot['point'],
-        weight: snapshot['weight'],
-        lastapp: snapshot['lastapp'].toDate(),
-      );
+      name: snapshot['name'],
+      bloodtype: snapshot['bloodtype'],
+      gender: snapshot['gender'],
+      height: snapshot['height'],
+      phonenum: snapshot['phonenum'],
+      point: snapshot['point'],
+      weight: snapshot['weight'],
+      lastapp: snapshot['lastapp'].toDate(),
+      status: snapshot['status']);
 
   factory UserModel.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
