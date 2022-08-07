@@ -183,6 +183,7 @@ class _addinfoState extends State<addinfo> {
       'point': "0",
       'type': "user",
       'weight': weight,
+      'status': "Complete",
       'lastapp': DateTime(2022, 01, 01),
     };
 

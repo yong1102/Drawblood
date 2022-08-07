@@ -38,7 +38,7 @@ class _signupState extends State<signup> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(
-              "Healtbot",
+              "Drawblood",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
             ),
             SizedBox(height: size.height * 0.03),

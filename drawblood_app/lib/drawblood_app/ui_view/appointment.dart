@@ -10,7 +10,7 @@ final uid = useruid();
 DateTime now = new DateTime.now();
 DateTime today = DateTime(now.year, now.month, now.day);
 DateTime date = DateTime(now.year, now.month, now.day);
-String vanue = "Vanue";
+String vanue = "Venue";
 
 popout(BuildContext context) {
   showDialog(
@@ -117,7 +117,13 @@ popout(BuildContext context) {
                                       DateTime? lastapp = userData?.lastapp;
                                       final difference =
                                           date.difference(lastapp!).inDays;
-                                      if (vanue == 'Vanue' || date == null) {
+                                      if (userData?.status == "Ongoing") {
+                                        Fluttertoast.showToast(
+                                            msg:
+                                                "Currently you are in the appointment. Please cancel the appoinment to make a need appointment.",
+                                            timeInSecForIosWeb: 25);
+                                      } else if (vanue == 'Venue' ||
+                                          date == null) {
                                         Fluttertoast.showToast(
                                             msg:
                                                 "Please fill in the venue and date",
@@ -160,22 +166,22 @@ Future<void> inputData() async {
       .doc('appoit');
 
   final listappointment =
-      FirebaseFirestore.instance.collection('appoinment').doc();
+      FirebaseFirestore.instance.collection('appoinment').doc("${uid}${date}");
 
   final json = {
     'vanue': vanue,
     'date': date,
-    'status': 'On going',
+    'status': 'Ongoing',
     'createdate': today
   };
   final json2 = {
     'vanue': vanue,
     'date': date,
     'user_id': uid,
-    'status': "On going",
+    'status': "Ongoing",
   };
   final json3 = {
-    'lastapp': date,
+    'status': "Ongoing",
   };
 
   await createappointment.set(json);

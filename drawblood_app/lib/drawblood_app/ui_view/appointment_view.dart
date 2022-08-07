@@ -71,7 +71,7 @@ class _AppointmentViewState extends State<AppointmentView> {
                           final userapp = snapshot.data;
                           final status = userapp!.status;
                           DateTime? date = userapp!.date;
-                          if (status == "On going") {
+                          if (status == "Ongoing") {
                             final showdate = date.toString().substring(0, 10);
                             final vanue = userapp!.vanue;
                             DateTime now = new DateTime.now();
