@@ -348,7 +348,7 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                           width: 4,
                                                           color:
                                                               drawbloodAppTheme
-                                                                  .nearlyDarkBlue
+                                                                  .red
                                                                   .withOpacity(
                                                                       0.2)),
                                                     ),
@@ -373,8 +373,9 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                                     .normal,
                                                             fontSize: 24,
                                                             letterSpacing: 0.0,
-                                                            color: drawbloodAppTheme
-                                                                .nearlyDarkBlue,
+                                                            color:
+                                                                drawbloodAppTheme
+                                                                    .red,
                                                           ),
                                                         ),
                                                         Text(
@@ -406,10 +407,9 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                   child: CustomPaint(
                                                     painter: CurvePainter(
                                                         colors: [
-                                                          drawbloodAppTheme
-                                                              .nearlyDarkBlue,
-                                                          HexColor("#8A98E8"),
-                                                          HexColor("#8A98E8")
+                                                          drawbloodAppTheme.red,
+                                                          HexColor("#FF797A"),
+                                                          HexColor("#FF797A")
                                                         ],
                                                         angle: circle +
                                                             (360 - 140) *
@@ -772,7 +772,7 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                           width: 4,
                                                           color:
                                                               drawbloodAppTheme
-                                                                  .nearlyDarkBlue
+                                                                  .red
                                                                   .withOpacity(
                                                                       0.2)),
                                                     ),
@@ -789,17 +789,18 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: TextStyle(
-                                                            fontFamily:
-                                                                drawbloodAppTheme
-                                                                    .fontName,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            fontSize: 24,
-                                                            letterSpacing: 0.0,
-                                                            color: drawbloodAppTheme
-                                                                .nearlyDarkBlue,
-                                                          ),
+                                                              fontFamily:
+                                                                  drawbloodAppTheme
+                                                                      .fontName,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                              fontSize: 24,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              color:
+                                                                  drawbloodAppTheme
+                                                                      .red),
                                                         ),
                                                         Text(
                                                           'days left',
@@ -830,10 +831,9 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                   child: CustomPaint(
                                                     painter: CurvePainter(
                                                         colors: [
-                                                          drawbloodAppTheme
-                                                              .nearlyDarkBlue,
-                                                          HexColor("#8A98E8"),
-                                                          HexColor("#8A98E8")
+                                                          drawbloodAppTheme.red,
+                                                          HexColor("#FF797A"),
+                                                          HexColor("#FF797A")
                                                         ],
                                                         angle: 0 +
                                                             (360 - 140) *
@@ -920,6 +920,408 @@ class _AppointmentViewState extends State<AppointmentView> {
                               ),
                             );
                           }
+                        } else {
+                          final circle = (1 / 360) * 360;
+
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: drawbloodAppTheme.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(8.0),
+                                  bottomLeft: Radius.circular(8.0),
+                                  bottomRight: Radius.circular(8.0),
+                                  topRight: Radius.circular(68.0)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color:
+                                        drawbloodAppTheme.grey.withOpacity(0.2),
+                                    offset: Offset(1.1, 1.1),
+                                    blurRadius: 10.0),
+                              ],
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 16, left: 16, right: 16),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, right: 8, top: 4),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 48,
+                                                    width: 2,
+                                                    decoration: BoxDecoration(
+                                                      color: HexColor('#87A0E5')
+                                                          .withOpacity(0.5),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  4.0)),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 4,
+                                                                  bottom: 2),
+                                                          child: Text(
+                                                            "Date",
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  drawbloodAppTheme
+                                                                      .fontName,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontSize: 16,
+                                                              letterSpacing:
+                                                                  -0.1,
+                                                              color: drawbloodAppTheme
+                                                                  .grey
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .end,
+                                                          children: <Widget>[
+                                                            SizedBox(
+                                                              width: 28,
+                                                              height: 28,
+                                                              child: Image.asset(
+                                                                  "assets/drawblood_app/eaten.png"),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left: 4,
+                                                                      bottom:
+                                                                          3),
+                                                              child: Text(
+                                                                'None',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      drawbloodAppTheme
+                                                                          .fontName,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontSize: 16,
+                                                                  color: drawbloodAppTheme
+                                                                      .darkerText,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 8,
+                                              ),
+                                              Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    height: 48,
+                                                    width: 2,
+                                                    decoration: BoxDecoration(
+                                                      color: HexColor('#F56E98')
+                                                          .withOpacity(0.5),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  4.0)),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 4,
+                                                                  bottom: 2),
+                                                          child: Text(
+                                                            'Venue',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  drawbloodAppTheme
+                                                                      .fontName,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontSize: 16,
+                                                              letterSpacing:
+                                                                  -0.1,
+                                                              color: drawbloodAppTheme
+                                                                  .grey
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .end,
+                                                          children: <Widget>[
+                                                            SizedBox(
+                                                              width: 28,
+                                                              height: 28,
+                                                              child: Image.asset(
+                                                                  "assets/drawblood_app/burned.png"),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left: 4,
+                                                                      bottom:
+                                                                          3),
+                                                              child: Text(
+                                                                "None",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      drawbloodAppTheme
+                                                                          .fontName,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontSize: 12,
+                                                                  color: drawbloodAppTheme
+                                                                      .darkerText,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 16),
+                                        child: Center(
+                                          child: Stack(
+                                            clipBehavior: Clip.none,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  width: 100,
+                                                  height: 100,
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        drawbloodAppTheme.white,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(100.0),
+                                                    ),
+                                                    border: new Border.all(
+                                                        width: 4,
+                                                        color: drawbloodAppTheme
+                                                            .red
+                                                            .withOpacity(0.2)),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        'None',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              drawbloodAppTheme
+                                                                  .fontName,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontSize: 24,
+                                                          letterSpacing: 0.0,
+                                                          color:
+                                                              drawbloodAppTheme
+                                                                  .red,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        'days left',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              drawbloodAppTheme
+                                                                  .fontName,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 12,
+                                                          letterSpacing: 0.0,
+                                                          color:
+                                                              drawbloodAppTheme
+                                                                  .grey
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: CustomPaint(
+                                                  painter: CurvePainter(
+                                                      colors: [
+                                                        drawbloodAppTheme.red,
+                                                        HexColor("#FF797A"),
+                                                        HexColor("#FF797A")
+                                                      ],
+                                                      angle: 0 +
+                                                          (360 - 140) *
+                                                              (1.0 -
+                                                                  widget
+                                                                      .animation!
+                                                                      .value)),
+                                                  child: SizedBox(
+                                                    width: 108,
+                                                    height: 108,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 24, right: 24, top: 8, bottom: 8),
+                                  child: Container(
+                                    height: 2,
+                                    decoration: BoxDecoration(
+                                      color: drawbloodAppTheme.background,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(4.0)),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 24, right: 24, top: 8, bottom: 16),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              'Inactive',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily:
+                                                    drawbloodAppTheme.fontName,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 16,
+                                                letterSpacing: -0.2,
+                                                color:
+                                                    drawbloodAppTheme.darkText,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.only(top: 6),
+                                              child: Text(
+                                                'God Is Surely Very Happy Of His Superheroes On Earth Working For The Welfare Of People And Donating Blood.',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontFamily: drawbloodAppTheme
+                                                      .fontName,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 12,
+                                                  color: drawbloodAppTheme.grey
+                                                      .withOpacity(0.5),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
                         }
                         return Center(
                             child: CircularProgressIndicator(
