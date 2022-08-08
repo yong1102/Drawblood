@@ -1,7 +1,7 @@
 import 'package:drawblood_app/drawblood_app/Homepage/homepage_screen.dart';
 import 'package:drawblood_app/drawblood_app/Profile/profile_screen.dart';
 import 'package:drawblood_app/drawblood_app/Reward/reward_screen.dart';
-import 'package:drawblood_app/drawblood_app/training/training_screen.dart';
+import 'package:drawblood_app/drawblood_app/appointment/Appointment_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
 import 'drawbood_app_theme.dart';
@@ -97,8 +97,8 @@ class _DrawBloodAppHomeScreenState extends State<DrawBloodAppHomeScreen>
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      TrainingScreen(animationController: animationController);
+                  tabBody = AppointmentScreen(
+                      animationController: animationController);
                 });
               });
             } else if (index == 2) {

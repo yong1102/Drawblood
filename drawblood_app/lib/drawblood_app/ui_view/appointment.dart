@@ -165,14 +165,14 @@ Future<void> inputData() async {
   final json = {
     'vanue': vanue,
     'date': date,
-    'status': 'On going',
+    'status': 'Ongoing',
     'createdate': today
   };
   final json2 = {
     'vanue': vanue,
     'date': date,
     'user_id': uid,
-    'status': "On going",
+    'status': "Ongoing",
   };
   final json3 = {
     'lastapp': date,
