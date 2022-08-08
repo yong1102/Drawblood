@@ -1,10 +1,10 @@
 import 'package:drawblood_app/drawblood_app/Signup/components/body/body_mobile.dart';
 import 'package:drawblood_app/drawblood_app/Signup/signup_screen.dart';
-import 'package:drawblood_app/drawblood_app/introduction/components/care_view.dart';
+import 'package:drawblood_app/drawblood_app/introduction/components/easytouse.dart';
 import 'package:drawblood_app/drawblood_app/introduction/components/center_next_button.dart';
-import 'package:drawblood_app/drawblood_app/introduction/components/mood_diary_vew.dart';
-import 'package:drawblood_app/drawblood_app/introduction/components/relax_view.dart';
-import 'package:drawblood_app/drawblood_app/introduction/components/splash_view.dart';
+import 'package:drawblood_app/drawblood_app/introduction/components/royalty.dart';
+import 'package:drawblood_app/drawblood_app/introduction/components/shortageofblood_view.dart';
+import 'package:drawblood_app/drawblood_app/introduction/components/thanksforchoosing_view.dart';
 import 'package:drawblood_app/drawblood_app/introduction/components/top_back_skip_view.dart';
 import 'package:drawblood_app/drawblood_app/introduction/components/welcome_view.dart';
 import 'package:flutter/material.dart';

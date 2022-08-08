@@ -6,7 +6,7 @@ class drawbloodAppTheme {
   static const Color white = Color(0xFFFFFFFF);
   static const Color background = Color(0xFFF2F3F8);
   static const Color nearlyDarkBlue = Color(0xFF2633C5);
-  static const kPrimaryColor = Color(0xFF6F35A5);
+  static const kPrimaryColor = Color(0xFFFF797A);
   static const kPrimaryLightColor = Color(0xFFF1E6FF);
 
   static const Color nearlyBlue = Color(0xFF00B6F0);
@@ -14,6 +14,7 @@ class drawbloodAppTheme {
   static const Color grey = Color(0xFF3A5160);
   static const Color dark_grey = Color(0xFF313A44);
   static const Color red = Color(0xFFFF797A);
+  static const Color limegreen = Color(0xFF32cd32);
 
   static const Color darkText = Color(0xFF253840);
   static const Color darkerText = Color(0xFF17262A);

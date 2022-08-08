@@ -2,6 +2,7 @@ import 'package:drawblood_app/drawblood_app/Signup/signup_screen.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_button.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_input_field.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_password_field.dart';
+import 'package:drawblood_app/drawblood_app/drawbood_app_theme.dart';
 import 'package:drawblood_app/drawblood_app/login_page/components/background.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -59,10 +60,10 @@ class _Login_pageState extends State<Login_page> {
               text: TextSpan(
                   style: TextStyle(color: Colors.grey, fontSize: 20.0),
                   children: <TextSpan>[
-                    TextSpan(text: "haven't create account? "),
+                    TextSpan(text: "Haven't create account? "),
                     TextSpan(
                         text: "Sign Up",
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: drawbloodAppTheme.red),
                         recognizer: TapGestureRecognizer()
                           ..onTap = (() => Navigator.push(
                                 context,

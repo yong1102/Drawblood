@@ -103,7 +103,7 @@ class NewsView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 100 * (1.0 - animation!.value), 0.0, 0.0),
             child: SizedBox(
-              width: 130,
+              width: 250,
               child: Stack(
                 children: <Widget>[
                   Padding(
@@ -130,7 +130,7 @@ class NewsView extends StatelessWidget {
                           bottomRight: Radius.circular(8.0),
                           bottomLeft: Radius.circular(8.0),
                           topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(54.0),
+                          topRight: Radius.circular(8.0),
                         ),
                       ),
                       child: Padding(
@@ -142,7 +142,7 @@ class NewsView extends StatelessWidget {
                           children: <Widget>[
                             Text(
                               newsListData!.titleTxt,
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontFamily: drawbloodAppTheme.fontName,
                                 fontWeight: FontWeight.bold,
@@ -160,11 +160,11 @@ class NewsView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      newsListData!.meals!.join('\n'),
+                                      newsListData!.info!.join('\n'),
                                       style: TextStyle(
                                         fontFamily: drawbloodAppTheme.fontName,
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 10,
+                                        fontSize: 12,
                                         letterSpacing: 0.2,
                                         color: drawbloodAppTheme.white,
                                       ),
@@ -173,61 +173,6 @@ class NewsView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            newsListData?.kacl != 0
-                                ? Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      Text(
-                                        newsListData!.kacl.toString(),
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily:
-                                              drawbloodAppTheme.fontName,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 24,
-                                          letterSpacing: 0.2,
-                                          color: drawbloodAppTheme.white,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 4, bottom: 3),
-                                        child: Text(
-                                          'kcal',
-                                          style: TextStyle(
-                                            fontFamily:
-                                                drawbloodAppTheme.fontName,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 10,
-                                            letterSpacing: 0.2,
-                                            color: drawbloodAppTheme.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : Container(
-                                    decoration: BoxDecoration(
-                                      color: drawbloodAppTheme.nearlyWhite,
-                                      shape: BoxShape.circle,
-                                      boxShadow: <BoxShadow>[
-                                        BoxShadow(
-                                            color: drawbloodAppTheme.nearlyBlack
-                                                .withOpacity(0.4),
-                                            offset: Offset(8.0, 8.0),
-                                            blurRadius: 8.0),
-                                      ],
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(6.0),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: HexColor(newsListData!.endColor),
-                                        size: 24,
-                                      ),
-                                    ),
-                                  ),
                           ],
                         ),
                       ),
@@ -246,11 +191,11 @@ class NewsView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 0,
-                    left: 8,
+                    top: 10,
+                    left: 15,
                     child: SizedBox(
-                      width: 80,
-                      height: 80,
+                      width: 60,
+                      height: 60,
                       child: Image.asset(newsListData!.imagePath),
                     ),
                   )
