@@ -1,4 +1,4 @@
-import 'package:drawblood_app/drawblood_app/Homepage/meals_list_view.dart';
+import 'package:drawblood_app/drawblood_app/Homepage/news_list_view.dart';
 import 'package:drawblood_app/drawblood_app/ui_view/appointment_view.dart';
 import 'package:drawblood_app/drawblood_app/ui_view/homepage_title_view.dart';
 import 'package:drawblood_app/drawblood_app/ui_view/title_view.dart';

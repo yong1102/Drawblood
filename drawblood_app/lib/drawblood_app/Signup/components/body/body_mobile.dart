@@ -3,6 +3,7 @@ import 'package:drawblood_app/drawblood_app/addinfo/addinfo.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_button.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_input_field.dart';
 import 'package:drawblood_app/drawblood_app/components/rounded_password_field.dart';
+import 'package:drawblood_app/drawblood_app/drawbood_app_theme.dart';
 import 'package:drawblood_app/drawblood_app/login_page/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -65,10 +66,10 @@ class _signupState extends State<signup> {
               text: TextSpan(
                   style: TextStyle(color: Colors.grey, fontSize: 20.0),
                   children: <TextSpan>[
-                    TextSpan(text: "Areadly have account? "),
+                    TextSpan(text: "Already have account? "),
                     TextSpan(
                         text: "Log In",
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: drawbloodAppTheme.red),
                         recognizer: TapGestureRecognizer()
                           ..onTap = (() => Navigator.push(
                                 context,

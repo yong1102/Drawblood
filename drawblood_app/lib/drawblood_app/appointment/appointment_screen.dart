@@ -30,7 +30,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
         CurvedAnimation(
             parent: widget.animationController!,
             curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
-    addAllListData();
+    // addAllListData();
 
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
@@ -57,19 +57,19 @@ class _AppointmentScreenState extends State<AppointmentScreen>
     super.initState();
   }
 
-  void addAllListData() {
-    const int count = 5;
+  // void addAllListData() {
+  //   const int count = 5;
 
-    listViews.add(
-      AppointmentView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-  }
+  //   listViews.add(
+  //     AppointmentView(
+  //       animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+  //           parent: widget.animationController!,
+  //           curve:
+  //               Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+  //       animationController: widget.animationController!,
+  //     ),
+  //   );
+  // }
 
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
@@ -110,11 +110,18 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                   24,
               bottom: 62 + MediaQuery.of(context).padding.bottom,
             ),
-            itemCount: listViews.length,
+            itemCount: 1,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
               widget.animationController?.forward();
-              return listViews[index];
+              return AppointmentView(
+                animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+                    CurvedAnimation(
+                        parent: widget.animationController!,
+                        curve: Interval((1 / 5) * 2, 1.0,
+                            curve: Curves.fastOutSlowIn))),
+                animationController: widget.animationController!,
+              );
             },
           );
         }
