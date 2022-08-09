@@ -1,7 +1,4 @@
 import 'package:drawblood_app/drawblood_app/ui_view/appointment_history_view.dart';
-import 'package:drawblood_app/drawblood_app/ui_view/area_list_view.dart';
-import 'package:drawblood_app/drawblood_app/ui_view/running_view.dart';
-import 'package:drawblood_app/drawblood_app/ui_view/title_view.dart';
 
 import 'package:flutter/material.dart';
 
