@@ -79,16 +79,26 @@ class appoint {
   final String? status;
   final DateTime? date;
   final DateTime? createdate;
+  final String? appointmentid;
 
-  appoint({this.vanue, this.status, this.date, this.createdate});
+  appoint(
+      {this.vanue,
+      this.status,
+      this.date,
+      this.createdate,
+      this.appointmentid});
 
   static appoint fromJson(Map<String, dynamic> snapshot) => appoint(
-        vanue: snapshot['vanue'],
-        status: snapshot['status'],
-        date: snapshot['date'].toDate(),
-        createdate: snapshot['createdate'].toDate(),
-      );
+      vanue: snapshot['vanue'],
+      status: snapshot['status'],
+      date: snapshot['date'].toDate(),
+      createdate: snapshot['createdate'].toDate(),
+      appointmentid: snapshot['appointmentid']);
 
-  Map<String, dynamic> toJson() =>
-      {"vanue": vanue, "status": status, "createdate": createdate};
+  Map<String, dynamic> toJson() => {
+        "vanue": vanue,
+        "status": status,
+        "createdate": createdate,
+        "appointmentid": appointmentid
+      };
 }

@@ -57,8 +57,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     const int count = 9;
 
     listViews.add(
-      HomepageTitleView(
+      TitleView(
         titleTxt: 'Appointment',
+        subTxt: 'Cancel',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:

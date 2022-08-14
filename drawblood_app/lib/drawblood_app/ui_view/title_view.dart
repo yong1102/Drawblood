@@ -1,3 +1,5 @@
+import 'package:drawblood_app/drawblood_app/ui_view/cancel_appoinment.dart';
+
 import '../drawbood_app_theme.dart';
 
 import 'package:flutter/material.dart';
@@ -47,7 +49,9 @@ class TitleView extends StatelessWidget {
                     InkWell(
                       highlightColor: Colors.transparent,
                       borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                      onTap: () {},
+                      onTap: () {
+                        popout_cancel(context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Row(

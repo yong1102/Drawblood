@@ -81,7 +81,7 @@ class _AppointmentViewState extends State<AppointmentView> {
               child: WillPopScope(
                 onWillPop: () async => false,
                 child: SizedBox(
-                  height: 400,
+                  height: 800,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
@@ -203,7 +203,7 @@ Widget _userAppointmentListWidget(AppoinmentList list) {
     padding:
         const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 16.0, right: 16.0),
     child: Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: EdgeInsets.only(bottom: 0),
       decoration: BoxDecoration(
         color: drawbloodAppTheme.white,
         borderRadius: BorderRadius.only(
@@ -265,7 +265,7 @@ Widget _userAppointmentListWidget(AppoinmentList list) {
                       fontSize: 14,
                       letterSpacing: 0.18,
                       color: list.status == 'Ongoing'
-                          ? drawbloodAppTheme.darkText
+                          ? drawbloodAppTheme.limegreen
                           : list.status == 'Complete'
                               ? drawbloodAppTheme.limegreen
                               : drawbloodAppTheme.red,

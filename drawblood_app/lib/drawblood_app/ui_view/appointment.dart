@@ -1,16 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:drawblood_app/drawblood_app/models/user_appointment_list_data.dart';
+import 'package:drawblood_app/drawblood_app/ui_view/appointment_history_view.dart';
 import 'package:drawblood_app/firebase_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 import '../models/user_data.dart';
+import 'appointment_info.dart';
 
+List<clinic_list> clinic = [];
 final uid = useruid();
 DateTime now = new DateTime.now();
 DateTime today = DateTime(now.year, now.month, now.day);
 DateTime date = DateTime(now.year, now.month, now.day);
 String vanue = "Venue";
+List testing = [];
+String? name = "";
+String? gender = "";
+String? height = "";
+String? weight = "";
+String? bloodtypes = "";
+
+void initState() {
+  getclinic();
+}
 
 popout(BuildContext context) {
   showDialog(
@@ -45,6 +59,7 @@ popout(BuildContext context) {
                     }
 
                     if (snapshot.hasData) {
+                      getclinic();
                       final userData = snapshot.data;
                       return Form(
                         child: Column(
@@ -58,17 +73,10 @@ popout(BuildContext context) {
                                 ),
                                 SizedBox(width: 15),
                                 DropdownButton<String>(
-                                  items: <String>[
-                                    'Cyberjaya Clinic A',
-                                    'Cyberjaya Clinic B',
-                                    'Cyberjaya Clinic C',
-                                    'Cyberjaya Clinic D'
-                                  ].map((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
+                                  items: testing
+                                      .map((value) => DropdownMenuItem<String>(
+                                          value: value, child: Text(value)))
+                                      .toList(),
                                   hint: Text(
                                     vanue,
                                     style: TextStyle(
@@ -134,11 +142,24 @@ popout(BuildContext context) {
                                                 "Your last appoinment is ${lastapp.toString().substring(0, 10)}, please make appointment 3 month after the last date",
                                             timeInSecForIosWeb: 25);
                                       } else {
+                                        name = userData?.name;
+                                        weight = userData?.weight;
+                                        height = userData?.height;
+                                        gender = userData?.gender;
+                                        bloodtypes = userData?.bloodtype;
                                         inputData();
+                                        Navigator.pop(context);
+
                                         Fluttertoast.showToast(
                                             msg: "Appointment Successfull",
                                             timeInSecForIosWeb: 25);
-                                        print(difference);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const qrcode(),
+                                          ),
+                                        );
                                       }
                                     },
                                     child: Text(
@@ -172,12 +193,18 @@ Future<void> inputData() async {
     'vanue': vanue,
     'date': date,
     'status': 'Ongoing',
-    'createdate': today
+    'createdate': today,
+    'appointmentid': "${uid}${date}",
   };
   final json2 = {
     'vanue': vanue,
     'date': date,
     'user_id': uid,
+    'name': name,
+    'bloodtype': bloodtypes,
+    'weight': weight,
+    'height': height,
+    'gender': gender,
     'status': "Ongoing",
   };
   final json3 = {
@@ -187,4 +214,27 @@ Future<void> inputData() async {
   await createappointment.set(json);
   await listappointment.set(json2);
   await docUser.update(json3);
+}
+
+Future<void> getclinic() async {
+  print('successful');
+  final db = FirebaseFirestore.instance;
+  final docRef = db.collection("user").where('type', isEqualTo: 'medical');
+  var snapshot = await docRef.get();
+  if (clinic.isNotEmpty) {
+    clinic.clear();
+  }
+  if (testing.isNotEmpty) {
+    testing.clear();
+  }
+  if (snapshot.docs.isNotEmpty) {
+    for (DocumentSnapshot results in snapshot.docs) {
+      Map<String, dynamic> data = results.data() as Map<String, dynamic>;
+
+      clinic.add(clinic_list(
+        name: data['name'],
+      ));
+      testing.insert(0, data['name']);
+    }
+  }
 }
