@@ -1,4 +1,5 @@
 import 'package:drawblood_app/drawblood_app/models/user_data.dart';
+import 'package:drawblood_app/drawblood_app/ui_view/appointment_info.dart';
 import 'package:drawblood_app/firebase_info.dart';
 import 'package:drawblood_app/main.dart';
 
@@ -22,8 +23,13 @@ class AppointmentView extends StatefulWidget {
 
 class _AppointmentViewState extends State<AppointmentView> {
   void initState() {
+    build(context);
     super.initState();
     uid = useruid();
+  }
+
+  void update() {
+    setState(() {});
   }
 
   @override
@@ -454,7 +460,7 @@ class _AppointmentViewState extends State<AppointmentView> {
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                            children: <Widget>[
+                                            children: [
                                               Text(
                                                 'Active',
                                                 textAlign: TextAlign.center,
@@ -486,6 +492,23 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                   ),
                                                 ),
                                               ),
+                                              SizedBox(
+                                                height: 30,
+                                              ),
+                                              IconButton(
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const qrcode(),
+                                                      ),
+                                                    ).then((value) =>
+                                                        setState((() {
+                                                          status == "Ongoing";
+                                                        })));
+                                                  },
+                                                  icon: Icon(Icons.qr_code))
                                             ],
                                           ),
                                         ),
