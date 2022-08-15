@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:drawblood_app/drawblood_app/drawbood_app_theme.dart';
 import 'package:drawblood_app/drawblood_app/models/user_data.dart';
 import 'package:drawblood_app/firebase_info.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,8 +27,10 @@ class _qrcodeState extends State<qrcode> {
     Size size = MediaQuery.of(context).size;
     size2 = size;
     return Scaffold(
-      backgroundColor: Colors.blue,
-      appBar: AppBar(),
+      backgroundColor: drawbloodAppTheme.red,
+      appBar: AppBar(
+        backgroundColor: drawbloodAppTheme.red,
+      ),
       body: FutureBuilder<appoint?>(
           future: FirestoreQuery.readUserapp(uid),
           builder: (context, snapshot) {
@@ -82,7 +85,7 @@ class _qrcodeState extends State<qrcode> {
                           ),
                           Row(
                             children: [
-                              Text("Vanue",
+                              Text("Venue",
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
@@ -154,6 +157,7 @@ class _qrcodeState extends State<qrcode> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           QrImage(
+                            backgroundColor: Colors.white,
                             data: id!,
                             version: QrVersions.auto,
                             size: 200.0,

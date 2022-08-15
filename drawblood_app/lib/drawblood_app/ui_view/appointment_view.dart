@@ -207,7 +207,7 @@ class _AppointmentViewState extends State<AppointmentView> {
                                                                         FontWeight
                                                                             .w600,
                                                                     fontSize:
-                                                                        16,
+                                                                        14.8,
                                                                     color: drawbloodAppTheme
                                                                         .darkerText,
                                                                   ),

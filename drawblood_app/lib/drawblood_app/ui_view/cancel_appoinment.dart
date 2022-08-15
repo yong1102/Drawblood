@@ -149,13 +149,13 @@ Future<void> cancelapp() async {
       FirebaseFirestore.instance.collection('appoinment').doc(appoinmentid);
 
   final json = {
-    'status': 'cancel',
+    'status': 'Cancel',
   };
   final json2 = {
-    'status': "cancel",
+    'status': "Cancel",
   };
   final json3 = {
-    'status': "cancel",
+    'status': "Cancel",
   };
 
   await createappointment.update(json);
