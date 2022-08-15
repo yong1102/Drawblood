@@ -21,6 +21,7 @@ String? gender = "";
 String? height = "";
 String? weight = "";
 String? bloodtypes = "";
+String? point = "";
 
 void initState() {
   getclinic();
@@ -147,6 +148,7 @@ popout(BuildContext context) {
                                         height = userData?.height;
                                         gender = userData?.gender;
                                         bloodtypes = userData?.bloodtype;
+                                        point = userData?.point;
                                         inputData();
                                         Navigator.pop(context);
 
@@ -206,6 +208,7 @@ Future<void> inputData() async {
     'height': height,
     'gender': gender,
     'status': "Ongoing",
+    'point': point,
   };
   final json3 = {
     'status': "Ongoing",
